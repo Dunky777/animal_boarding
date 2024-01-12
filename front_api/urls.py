@@ -1,7 +1,7 @@
 from django.urls import path
 from rest_framework.routers import DefaultRouter
 
-from .views import AppointmentListView
+from .views import AppointmentApiView
 
 # r = DefaultRouter()
 # r.register('reserved-days', AppointmentListView)
@@ -10,5 +10,5 @@ from .views import AppointmentListView
 # ] + r.urls
 
 urlpatterns = [
-    path('reserved_days', AppointmentListView.as_view()),
+    path('reserved_days', AppointmentApiView.as_view()),
 ]
