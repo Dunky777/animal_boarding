@@ -1,19 +1,16 @@
-from datetime import datetime, timedelta
-
-from django.db.models import Q
+from datetime import timedelta
 from django.shortcuts import render
-from rest_framework import status
+from rest_framework import status, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from reservation.models import Appointment
-from reservation.serializers import DateSerializer
+from reservation.serializers import AppointmentSerializer
 
 
 class AppointmentApiView(APIView):
     def get(self, request):
-        curr_month = datetime.now().month
-        found_objects = Appointment.objects.filter(Q(start_date__month=curr_month) | Q(end_date__month=curr_month))
+        found_objects = Appointment.find_by_two_months()
         res = []
         for appointment in found_objects:
             start = appointment.start_date
@@ -26,3 +23,8 @@ class AppointmentApiView(APIView):
         return Response({
             'days': res,
         })
+
+
+class AppointmentCreate(generics.CreateAPIView):
+    queryset = Appointment.objects.all()
+    serializer_class = AppointmentSerializer
