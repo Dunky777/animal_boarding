@@ -1,4 +1,6 @@
 from datetime import timedelta
+
+from django.db import transaction
 from django.shortcuts import render
 from rest_framework import status, generics
 from rest_framework.response import Response
@@ -28,3 +30,6 @@ class AppointmentApiView(APIView):
 class AppointmentCreate(generics.CreateAPIView):
     queryset = Appointment.objects.all()
     serializer_class = AppointmentSerializer
+    @transaction.atomic
+    def perform_create(self, serializer):
+        serializer.save()

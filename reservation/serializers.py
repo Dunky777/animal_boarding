@@ -12,7 +12,6 @@ class AppointmentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def validate_phone(self, value: str):
-        # Пример валидации поля field1
         if len(value) < 5:
             raise serializers.ValidationError("Введите корректный номер телефона")
         return value
