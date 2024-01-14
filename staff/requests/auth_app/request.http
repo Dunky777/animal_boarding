@@ -1,0 +1,4 @@
+GET http://localhost:8000/api/staff/logout
+Authorization: Token 84e9a840fbe56535e9bcf76f10bc056e37db68e8
+
+###
