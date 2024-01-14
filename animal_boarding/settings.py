@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_extensions',
     'reservation',
-    'front_api',
     'corsheaders',
+    'staff'
 ]
 
 MIDDLEWARE = [

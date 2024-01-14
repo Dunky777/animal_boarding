@@ -21,7 +21,7 @@ class AppointmentSerializer(serializers.ModelSerializer):
             return None
         if len(value) < 2:
             raise serializers.ValidationError("Введите корректный никнейм телеграма (пример @yourname)")
-        if not(value[0] == '@' and value.count('@') == 1):
+        if not (value[0] == '@' and value.count('@') == 1):
             raise serializers.ValidationError("Введите корректный никнейм телеграма (пример @yourname)")
         return value
 
