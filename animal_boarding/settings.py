@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django_extensions',
     'reservation',
     'corsheaders',
-    'staff'
+    'staff',
+    'review',
 ]
 
 MIDDLEWARE = [
